@@ -10,6 +10,14 @@ class ApiError extends Error{
         this.data = null
         this.message = message
         this.success = false
-        this.errors = this.errors
+        this.errors = errors
+
+        if(stack){
+            this.stack = statck
+        }else{
+            Error.captureStackTrace(this,this.constructor)
+        }
     }
-}
+} 
+
+export { ApiError }
